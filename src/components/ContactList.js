@@ -1,18 +1,11 @@
+import ContactCard from "./ContactCard";
+
 const ContactList = props => {
-
-  const renderContactList = props.contacts.map(contact => {
-    return (
-      <div className="item">
-        <div className="content">
-          <div className="header">{contact.name}</div>
-          <div className="email">{contact.email}</div>
-        </div>
-        <i className='icon trash alternate outline'></i>
-      </div>
+  const renderContactList = props.contacts.map(contact =>
+      <ContactCard contact={ contact } key={contact.id} />
     );
-  });
 
-  return <div className="ui celled list">{renderContactList}</div>
+  return <div className="ui celled list">{ renderContactList }</div>
 }
 
 export default ContactList;
