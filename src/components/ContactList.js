@@ -2,7 +2,7 @@ import ContactCard from "./ContactCard";
 
 const ContactList = props => {
   const renderContactList = props.contacts.map(contact =>
-      <ContactCard contact={ contact } key={contact.id} />
+      <ContactCard contact={ contact } key={contact.id} removeContact={ props.removeContact } />
     );
 
   return <div className="ui celled list">{ renderContactList }</div>
