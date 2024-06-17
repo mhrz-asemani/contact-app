@@ -1,6 +1,6 @@
 // Functional Component
 const Header = () =>
-    <div className="ui fixed menu">
+    <div className="ui menu">
         <div className="ui container center">
             <h2>contact manager</h2>
         </div>
