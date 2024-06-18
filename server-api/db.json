@@ -1,0 +1,19 @@
+{
+  "contacts": [
+    {
+      "id": "811bec3b-9ef9-4350-a4d5-7a84c3118c63",
+      "name": "Farah",
+      "email": "farah@gmail.com"
+    },
+    {
+      "id": "d6ac04f8-5aa5-4970-8cbc-c0007977550a",
+      "name": "Amin",
+      "email": "aseamin90@gmail.com"
+    },
+    {
+      "id": "cb55602b-6e00-4ab1-a184-c37edbbd4f85",
+      "name": "Reza",
+      "email": "reza@gmail.com"
+    }
+  ]
+}

@@ -12,7 +12,7 @@ class AddContact extends Component {
             alert("All the fields are mandatory!");
             return;
         }
-        this.props.addContactHandler(this.state);
+        this.props.addContact(this.state);
         this.setState({name: "", email: ""});
     };
 
