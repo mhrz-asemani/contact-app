@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 
 
 const ContactList = props => {
-  console.log(props)
   const renderContactList = props.contacts.map(contact =>
     <ContactCard
       contact={contact}
