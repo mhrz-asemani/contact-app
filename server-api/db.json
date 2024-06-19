@@ -2,18 +2,18 @@
   "contacts": [
     {
       "id": "811bec3b-9ef9-4350-a4d5-7a84c3118c63",
-      "name": "Farah",
+      "name": "Farah Raad",
       "email": "farah@gmail.com"
     },
     {
       "id": "d6ac04f8-5aa5-4970-8cbc-c0007977550a",
-      "name": "Amin",
+      "name": "Amin Asemani",
       "email": "aseamin90@gmail.com"
     },
     {
-      "id": "cb55602b-6e00-4ab1-a184-c37edbbd4f85",
-      "name": "Reza",
-      "email": "reza@gmail.com"
+      "id": "28f5839f-3c22-4961-809a-9bca13dc33b8",
+      "name": "Sam",
+      "email": "sam@gmail.com"
     }
   ]
 }
