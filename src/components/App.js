@@ -12,7 +12,7 @@ import api from '../api/contacts';
 function App() {
   // const LOCAL_STORAGE_KEY = "contacts";
   const [contacts, setContacts] = useState([]),
-    [contactsResult, setContactsResult] = useState([]),
+    [searchResults, setSearchResults] = useState([]),
     [searchTerm, setSearchTerm] = useState('');
 
   const addContact = async contact => {
@@ -31,9 +31,17 @@ function App() {
     setContacts(contacts.filter(contact => contact.id !== id));
   };
   const retrieveContacts = () => api.get('/contacts');     // GET method
-  const searchHandler = e => {
-    setSearchTerm(e.target.value);
-
+  const searchHandler = schTerm => {
+    setSearchTerm(schTerm.toLowerCase());
+    if (!!schTerm) {
+      const newContactList = contacts.filter(contact => {
+          return contact.name.toLowerCase().includes(schTerm) || contact.email.toLowerCase().includes(schTerm)
+        }
+      );
+      setSearchResults(newContactList);
+    } else {
+      setSearchResults(contacts);
+    }
   }
 
   useEffect(() => {
@@ -57,10 +65,11 @@ function App() {
         <Header/>
         <Routes>
           <Route path="/" element={<ContactList
-            contacts={contacts} removeContact={removeContact} term={searchTerm} searchHandler={searchHandler} />} />
-          <Route path="/add" element={<AddContact addContact={addContact}/>} />
-          <Route path="/edit" element={<EditContact editContact={editContact}/>} />
-          <Route path="/contact/:id" element={<ContactDetails />} />
+            contacts={searchTerm.length < 1 ? contacts : searchResults}
+            removeContact={removeContact} term={searchTerm} searchHandler={searchHandler}/>}/>
+          <Route path="/add" element={<AddContact addContact={addContact}/>}/>
+          <Route path="/edit" element={<EditContact editContact={editContact}/>}/>
+          <Route path="/contact/:id" element={<ContactDetails/>}/>
         </Routes>
       </Router>
     </div>
