@@ -9,6 +9,9 @@ import ContactDetails from "./ContactDetails";
 import EditContact from "./EditContact";
 import api from '../api/contacts';
 
+// start fetching before app rendering
+const retrieveContacts = api.get('/contacts');     // GET method
+
 function App() {
   // const LOCAL_STORAGE_KEY = "contacts";
   const [contacts, setContacts] = useState([]),
@@ -30,7 +33,7 @@ function App() {
     await api.delete(`/contacts/${id}`);
     setContacts(contacts.filter(contact => contact.id !== id));
   };
-  const retrieveContacts = () => api.get('/contacts');     // GET method
+  // const retrieveContacts = () => api.get('/contacts');     // GET method
   const searchHandler = schTerm => {
     setSearchTerm(schTerm.toLowerCase());
     if (!!schTerm) {
@@ -45,20 +48,23 @@ function App() {
   }
 
   useEffect(() => {
-    // use .then or async await to do sync statements
-    (async () => {
-      const allContacts = await retrieveContacts();
-      allContacts.data.length && setContacts(allContacts.data);
-    })();
+    // use .then or async/await to do sync statements
+
+    // you can fetch after component rendered (Fetch-On-Render):
+    // (async () => {
+    //   const allContacts = await retrieveContacts();
+    //   allContacts.data.length && setContacts(allContacts.data);
+    // })();
+
+    // or you can fetch before component rendering (Fetch-Then-Render) - "It is better":
+    retrieveContacts.then(allContacts => {allContacts.data.length && setContacts(allContacts.data)})
 
     // const retrievedContacts = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     // if (retrievedContacts !== null && retrievedContacts.length) setContacts(retrievedContacts);
-  }, []);
-
+  }, []);    // empty array means: the callback fires only once after first comp rendering.
   // useEffect(() => {
   //   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
   // }, [contacts]);
-
   return (
     <div className="ui container">
       <Router>
@@ -75,5 +81,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

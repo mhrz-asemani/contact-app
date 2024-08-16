@@ -1,6 +1,7 @@
-import ContactCard from "./ContactCard";
 import {Link} from "react-router-dom";
 import { useRef } from 'react';
+import ContactCard from "./ContactCard";
+import withLogger from "../HOC/withLogger";
 
 
 const ContactList = props => {
@@ -37,4 +38,5 @@ const ContactList = props => {
   )
 }
 
-export default ContactList;
+// export default ContactList;
+export default withLogger(ContactList);

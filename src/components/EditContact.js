@@ -2,7 +2,7 @@ import {Component} from 'react';
 import {useLocation, useNavigate} from "react-router-dom";
 
 /*
-    * use useLocation hook to get props from the Link. the hooks only works in functional components.
+    * use useLocation hook to get props from the Link. the hooks only work in functional components.
     * So, we have to wrap the EditContact component with a functional component. then pass the props
     * to the class component.
  */
